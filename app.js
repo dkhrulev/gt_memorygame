@@ -11,10 +11,10 @@ playerLivesCount.textContent = playerLives;
 
 const getData = () => [
     {imgSrc: './images/Clemens.jpg', name: 'Mr. Clemens'},
-    {imgSrc: './images/Hodek.jpg', name: 'Ms. Houdek'},
+    {imgSrc: './images/Houdek.jpg', name: 'Ms. Houdek'},
     {imgSrc: './images/Medina.jpg', name: 'Ms. Medina'},
     {imgSrc: './images/Clemens.jpg', name: 'Mr. Clemens'},
-    {imgSrc: './images/Hodek.jpg', name: 'Ms. Houdek'},
+    {imgSrc: './images/Houdek.jpg', name: 'Ms. Houdek'},
     {imgSrc: './images/Medina.jpg', name: 'Ms. Medina'},
     {imgSrc: './images/Abby.jpg', name: 'Coach Abby'},
     {imgSrc: './images/Mallernee.jpg', name: 'Coach Mallernee'},
@@ -30,7 +30,29 @@ const getData = () => [
 const randomize = () => {
     const cardData = getData();
     cardData.sort(() => Math.random() - 0.5)
-    console.log(cardData)
+    return cardData
 };
 
-randomize()
+//cardGenerator
+
+const cardGenerator = () => {
+    const cardData = randomize();
+
+    cardData.forEach(item => {
+        const card = document.createElement('div');
+        const face = document.createElement('img');
+        const back = document.createElement('div');
+        card.classList = 'card';
+        face.classList = 'face';
+        back.classList = 'back';
+        
+        face.src = item.imgSrc;
+
+
+        section.appendChild(card);
+        card.appendChild(face);
+        card.appendChild(back)
+    })
+}
+
+cardGenerator();
