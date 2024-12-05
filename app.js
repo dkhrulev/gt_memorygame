@@ -68,7 +68,7 @@ const checkCards = (e) => {
     const clickedCard = e.target
     clickedCard.classList.add('flipped')
     const flipedCards = document.querySelectorAll('.flipped')
-    
+    const toggleCards = document.querySelectorAll('.toggleCard')
 
     if(flipedCards.length === 2) {
         if(flipedCards[0].getAttribute('name') === 
@@ -91,7 +91,8 @@ const checkCards = (e) => {
                 };
         }
     }
-    if(toggleCard.length === 16){
+    console.log('toggleCards.length',toggleCards.length)
+    if(toggleCards.length === 12){
         restart('👌😁😎 YOU WON')
     }
 };
@@ -115,7 +116,7 @@ const restart = (text)  => {
     });
     playerLives = 10;
     playerLivesCount.textContent = playerLives
-    setTimeout(() => window.alert(text), 100)
+    setTimeout(() => window.alert(text), 100);
 }
 
 cardGenerator();

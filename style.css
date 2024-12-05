@@ -8,8 +8,15 @@ body{
     height: 100vh;
     background: linear-gradient(
         to right,
-        #acb6e5,
-        #74ebd5
+        rgb(235, 110, 110),
+
+        #af2626,
+
+        /* rgb(154, 33, 33) */
+        /* white, */
+        #af2626,
+        rgb(235, 110, 110)
+
     );
     display: flex;
     justify-content: center;
@@ -20,8 +27,8 @@ body{
 section{
     display: grid;
     grid-template-columns: repeat(4,8rem);
-    grid-template-rows: repete(4,8rem) ;
-    grid-gap : 2rem;
+    /* grid-template-rows: repeat(4,8rem) ; */
+    grid-gap : 2.5rem;
     perspective: 800px;
 }
 
@@ -32,6 +39,7 @@ section{
     transform-style: preserve-3d;
     transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: rgba(0,0,0,0.2) 0px 5px ;
+    border-radius: 15px;
 
 }
 
@@ -41,11 +49,20 @@ section{
     height: 100%;
     position: absolute;
     pointer-events: none;
+    border-radius: 15px;
+
 }
 
 .back {
-    background: white;
+    background-image: url('./images/WilkersonLogo.webp');
+    background-color: white;
+
+    /* background: white; */
+    /* background-repeat: no-repeat;
+    background-attachment: fixed; */
+    background-position: center;
     backface-visibility: hidden;
+    background-size: 150px 150px;
 }
 
 .toggleCard {
