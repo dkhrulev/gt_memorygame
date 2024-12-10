@@ -96,3 +96,13 @@ section{
 .toggleCard {
     transform: rotateY(180deg);
 }
+
+.playerLivesCount{
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 32px;
+}
+
+.remaining{
+    font-style: italic;
+}

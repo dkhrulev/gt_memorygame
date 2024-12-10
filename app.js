@@ -84,16 +84,19 @@ const checkCards = (e) => {
                     card.classList.remove('flipped')
                     setTimeout(() => card.classList.remove('toggleCard'), 1000 )
                 })
-                playerLives--;
-                playerLivesCount.textContent = playerLives;
-                if (playerLives === 0) {
-                    restart('😭😧😶‍🌫️ YOU LOST');
-                };
+                setTimeout(() => {
+                    playerLives--;
+                    playerLivesCount.textContent = playerLives;
+                    if (playerLives === 0) {
+                        restart('😭😧😶‍🌫️ YOU LOST');
+                    };
+                }, 1000 )
+                
         }
     }
     console.log('toggleCards.length',toggleCards.length)
     if(toggleCards.length === 12){
-        restart('👌😁😎 YOU WON')
+        setTimeout(() => restart('👌😁😎 YOU WON'), 1000 );
     }
 };
 
@@ -108,10 +111,10 @@ const restart = (text)  => {
 
         
         setTimeout(() => {
-        cards[index].style.pointerEvents = 'all'
-        faces[index].src = item.imgSrc
-        cards[index].setAttribute('name', item.name)
-        section.style.pointerEvents = 'all'
+            cards[index].style.pointerEvents = 'all'
+            faces[index].src = item.imgSrc
+            cards[index].setAttribute('name', item.name)
+            section.style.pointerEvents = 'all'
         }, 1000)
     });
     playerLives = 10;
