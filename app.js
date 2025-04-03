@@ -8,6 +8,11 @@ playerLivesCount.textContent = playerLives;
 
 //Generate the data
 // [{imgSrc: './images/Clemens.jpg'}]
+const loadingScreen = document.getElementById("loading-screen");
+
+window.addEventListener("load", () => {
+  loadingScreen.style.display = "none";
+});
 
 const getData = () => [
     {imgSrc: './images/Clemens.jpg', name: 'Mr. Clemens'},
