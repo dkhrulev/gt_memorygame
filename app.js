@@ -1,10 +1,31 @@
 const section = document.querySelector('section');
+const playerLivesCount = document.querySelector('.playerLivesCount');
+const timerCount = document.querySelector('.timerCount'); 
 
-const playerLivesCount = document.querySelector('span');
 let playerLives = 10;
-
+let timer = 0;
+let timerInterval;
 //link text
 playerLivesCount.textContent = playerLives;
+
+//timer
+function clearTimer() {
+    timer = 0;
+    timerCount.textContent = timer;
+};
+
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+      timer++;
+      timerCount.textContent = timer;
+    }, 1000);
+  }
+  
+  function stopTimer() {
+    clearInterval(timerInterval);
+  };
+
 
 //Generate the data
 // [{imgSrc: './images/Clemens.jpg'}]
@@ -62,7 +83,8 @@ const cardGenerator = () => {
         card.appendChild(face);
         card.appendChild(back)
 
-        card.addEventListener('click', (e) => {
+        card.addEventListener('click', (e) => { 
+            
             card.classList.toggle('toggleCard')
             checkCards(e)
         })
@@ -70,6 +92,7 @@ const cardGenerator = () => {
 }
 
 const checkCards = (e) => {
+    if (timer === 0) startTimer();
     const clickedCard = e.target
     clickedCard.classList.add('flipped')
     const flipedCards = document.querySelectorAll('.flipped')
@@ -94,6 +117,7 @@ const checkCards = (e) => {
                     playerLivesCount.textContent = playerLives;
                     if (playerLives === 0) {
                         restart('😭😧😶‍🌫️ YOU LOST');
+                        stopTimer();                        
                     };
                 }, 1000 )
                 
@@ -101,6 +125,7 @@ const checkCards = (e) => {
     }
     console.log('toggleCards.length',toggleCards.length)
     if(toggleCards.length === 12){
+        stopTimer();
         setTimeout(() => restart('👌😁😎 YOU WON'), 1000 );
     }
 };
@@ -124,6 +149,7 @@ const restart = (text)  => {
     });
     playerLives = 10;
     playerLivesCount.textContent = playerLives
+    clearTimer();
     setTimeout(() => window.alert(text), 100);
 }
 
